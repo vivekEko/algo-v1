@@ -6,6 +6,7 @@ import ekoLogo from "../assets/eko_logo.svg";
 import algoLogo from "../assets/algo_logo.svg";
 import openEye from "../assets/open_eye_icon.svg";
 import closeEye from "../assets/close_eye_icon.svg";
+import axios from "axios";
 
 const LoginPage = () => {
   // refs
@@ -37,20 +38,35 @@ const LoginPage = () => {
       emailRef?.current?.focus();
     }
   };
+
+  const loginCall = (e) => {
+    e?.preventDefault();
+    const formData = new FormData();
+    formData?.append("email", credentials?.email);
+    formData?.append("password", credentials?.password);
+    axios
+      .post("http://192.168.17.182:5000/google/login", formData)
+      ?.then((res) => {
+        console.log("login res:", res?.data);
+      });
+  };
+
   return (
     <div className="h-screen md:flex">
-      <div className="relative overflow-hidden p-10 flex md:w-1/2 bg-gradient-to-tr from-[#3633b4] to-[#3D3C73] i justify-around items-center ">
+      <div className="relative overflow-hidden p-10 flex md:w-1/2 bg-gradient-to-tr from-[#3633b4] to-[#3D3C73]  justify-around items-center ">
         <div>
           <div className="flex items-center gap-5">
             <img src={algoLogo} alt="algo logo" className="w-32 rounded-full" />
-            <h1 className="text-white font-bold text-4xl font-sans">ALGO-X</h1>
+            <h1 className="text-white font-bold text-4xl font-sans">
+              ALGO-SPACE
+            </h1>
           </div>
           <p className="text-white my-5 max-w-[20rem] xl:max-w-[25rem]">
             Transform reviews into growth insights with sentiment analysis,
             trends, and multi-source integration.
           </p>
           <div className="   text-white  mt-10 italic   flex gap-2">
-            <span>Powered by</span>
+            <span>Developed by</span>
             <a href="http://ekoinfomatics.com">
               <img src={ekoLogo} alt="eko" />
             </a>
@@ -64,7 +80,10 @@ const LoginPage = () => {
       </div>
       {/* form */}
       <div className="flex md:w-1/2 justify-center py-10 items-center bg-white p-5">
-        <form className="bg-white w-full max-w-sm md:max-w-lg">
+        <form
+          onSubmit={loginCall}
+          className="bg-white w-full max-w-sm md:max-w-lg"
+        >
           <h1 className="text-gray-800 font-bold text-2xl mb-1">
             Hello Again!
           </h1>
@@ -136,18 +155,18 @@ const LoginPage = () => {
               placeholder="Password"
             />
           </div>
-          {/* <button
+          <button
             type="submit"
-            className="block w-full bg-[#3633b4] hover:bg-[#2a2873] transition-all mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
+            className="block text-center w-full bg-[#3633b4] hover:bg-[#2a2873] transition-all mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
           >
             Login
-          </button> */}
-          <Link
+          </button>
+          {/* <Link
             to="/dashboard"
             className="block text-center w-full bg-[#3633b4] hover:bg-[#2a2873] transition-all mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
           >
             Login
-          </Link>
+          </Link> */}
           <p
             className={`text-red-500 mt-2 font-medium flex items-center gap-2 transition-all ${
               errorText ? "visible " : "invisible"

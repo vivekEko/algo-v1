@@ -1,4 +1,4 @@
-export const dashboard_data_1 = {
+export const dashboard_data_vivek = {
   pageName: "Dashboard",
   all_branch_data: [
     {
@@ -153,30 +153,8 @@ export const dashboard_data_1 = {
             bullet_points: ["lorem ipsum ", "lorem ipsum"],
           },
         ],
-        actions_required: [
-          "Promotional Discounts",
-          "Improve cleanliness and maintenance",
-          "Introduce staff training Program.",
-          "Hire better chefs",
-          "Promotional Discounts",
-          "Improve cleanliness and maintenance",
-          "Introduce staff training Program.",
-          "Hire better chefs",
-        ],
-        topics: [
-          "Hygiene",
-          "Room Maintenance",
-          "Staff service and Training",
-          "Food quality",
-          "Hygiene",
-          "Room Maintenance",
-          "Staff service and Training",
-          "Food quality",
-          "Hygiene",
-          "Room Maintenance",
-          "Staff service and Training",
-          "Food quality",
-        ],
+        actions_required: ["lorem", "ipsum", "dolor", "sit"],
+        topics: ["lorem", "ipsum", "dolor", "sit"],
       },
     },
 
@@ -339,7 +317,7 @@ export const dashboard_data_1 = {
   ],
 };
 
-export const dashboard_data_2 = {
+export const dashboard_data_simran = {
   pageName: "Dashboard",
   all_branch_data: [
     {
