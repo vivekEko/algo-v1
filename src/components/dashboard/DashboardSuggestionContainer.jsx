@@ -1,18 +1,20 @@
 import React from "react";
-import { dashboard_data_1 } from "../../helpers/dashboardData";
+import { dashboard_data_1 } from "../../mock_data/dashboardData";
 import action_icon from "../../assets/action_icon.svg";
 import DashboardReviews from "./DashboardReviews";
+import GraphsContainer from "./GraphsContainer";
 
 const DashboardSuggestionContainer = () => {
   return (
-    <div className="flex pl-5 gap-5">
+    <div className="flex pl-5 gap-5 mt-5">
       <section className="w-full  h-full">
+        <GraphsContainer />
         <DashboardReviews />
       </section>
-      <section className="w-full max-w-[350px]  h-full  ">
+      <section className="w-full max-w-[350px]  h-full">
         {/* actions */}
         <div className="border rounded-2xl overflow-hidden mb-10">
-          <div className="flex gap-5 items-center justify-start bg-gradient-to-tr from-[#3633b4] to-[#3D3C73] p-3 px-5">
+          <div className="flex gap-5 items-center justify-start bg-[#3D3C73] p-3 px-5">
             <div className="bg-white w-5 rounded-full aspect-square "></div>
             <h1 className="text-2xl font-semibold text-white">
               Actions Required
@@ -36,7 +38,7 @@ const DashboardSuggestionContainer = () => {
         </div>
         {/* topics */}
         <div className="border rounded-2xl overflow-hidden sticky top-20 ">
-          <div className="flex gap-5 items-center justify-start bg-gradient-to-tr from-[#3633b4] to-[#3D3C73] p-3 px-5">
+          <div className="flex gap-5 items-center justify-start bg-[#3D3C73] p-3 px-5">
             <div className="bg-white w-5 rounded-full aspect-square "></div>
             <h1 className="text-2xl font-semibold text-white">Topics</h1>
           </div>

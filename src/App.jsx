@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import Sidebar from "./components/global/Sidebar";
 import GoogleDashboardPage from "./pages/GoogleDashboardPage";
+import ProtectedRoutes from "./utils/routing/ProtectedRoutes";
+import ProtectedFromUser from "./utils/routing/ProtectedFromUser";
 
 function App() {
   // local variables
@@ -19,11 +21,15 @@ function App() {
         }  text-gray-800 `}
       >
         <Routes>
-          <Route path="/" element={<Navigate to="/login" replace={true} />} />
+          <Route element={<ProtectedFromUser />}>
+            <Route path="/" element={<Navigate to="/login" replace={true} />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
 
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/google-dashboard" element={<GoogleDashboardPage />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/google-dashboard" element={<GoogleDashboardPage />} />
+          </Route>
         </Routes>
       </main>
     </div>

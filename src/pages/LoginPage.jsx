@@ -1,12 +1,13 @@
 // react and routing
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // assets
 import ekoLogo from "../assets/eko_logo.svg";
 import algoLogo from "../assets/algo_logo.svg";
 import openEye from "../assets/open_eye_icon.svg";
 import closeEye from "../assets/close_eye_icon.svg";
 import axios from "axios";
+import { BASE_LINK } from "../base_api";
 
 const LoginPage = () => {
   // refs
@@ -20,6 +21,7 @@ const LoginPage = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [errorText, setErrorText] = useState("");
+  const navigate = useNavigate();
 
   // functions
   const changeEmailHandler = (e) => {
@@ -44,11 +46,12 @@ const LoginPage = () => {
     const formData = new FormData();
     formData?.append("email", credentials?.email);
     formData?.append("password", credentials?.password);
-    axios
-      .post("http://192.168.17.182:5000/google/login", formData)
-      ?.then((res) => {
-        console.log("login res:", res?.data);
-      });
+    axios.post(BASE_LINK + "google/login", formData)?.then((res) => {
+      if (res?.data?.status) {
+        localStorage?.setItem("client_id", res?.data?.data?.id);
+        navigate("/dashboard");
+      }
+    });
   };
 
   return (

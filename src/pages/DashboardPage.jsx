@@ -1,5 +1,5 @@
 import React from "react";
-import { dashboard_data_1 } from "../helpers/dashboardData";
+import { dashboard_data_1 } from "../mock_data/dashboardData";
 import DashboardHeader from "../components/dashboard/DashboardHeader";
 import DashboardSuggestionContainer from "../components/dashboard/DashboardSuggestionContainer";
 

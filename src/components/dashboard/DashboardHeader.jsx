@@ -1,5 +1,5 @@
 import React from "react";
-import { dashboard_data_1 } from "../../helpers/dashboardData";
+import { dashboard_data_1 } from "../../mock_data/dashboardData";
 import client_1_logo from "../../assets/client_1_logo.png";
 import zomato_logo from "../../assets/zomato_logo.svg";
 import swiggy_logo from "../../assets/swiggy_logo.svg";
@@ -55,13 +55,13 @@ const DashboardHeader = () => {
             {dashboard_data_1?.all_branch_data?.map((branch_data) => {
               return (
                 <option
-                  key={branch_data?.branchName}
+                  key={branch_data?.branch_name}
                   defaultValue={
-                    branch_data?.branchName == "Overall" ? true : false
+                    branch_data?.branch_name == "overall" ? true : false
                   }
-                  value={branch_data?.branchName}
+                  value={branch_data?.branch_name}
                 >
-                  {branch_data?.branchName}
+                  {branch_data?.branch_name}
                 </option>
               );
             })}

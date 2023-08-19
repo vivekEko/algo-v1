@@ -21,7 +21,7 @@ const Sidebar = () => {
 
   if (location?.pathname !== "/login")
     return (
-      <div className="bg-gradient-to-tr from-[#3633b4] to-[#3D3C73] fixed h-screen left-0 p-2 flex justify-between items-center flex-col">
+      <div className="bg-[#3D3C73] fixed h-screen left-0 p-2 flex justify-between items-center flex-col">
         <div>
           <div className="mt-4">
             <img src={algoLogo} alt="algospace" className="w-12" />
@@ -43,7 +43,7 @@ const Sidebar = () => {
         </div>
 
         <div className="pb-4">
-          <Link to="/login">
+          <Link onClick={() => localStorage?.clear()} to="/login">
             <img
               src={logout_icon}
               alt={"Logout"}
