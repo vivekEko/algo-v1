@@ -8,13 +8,13 @@ import google_logo from "../../assets/google_logo.svg";
 const DashboardHeader = () => {
   const logoArr = [google_logo, swiggy_logo, zomato_logo];
   return (
-    <header className="flex gap-5  justify-between items-center divide-x-2 pl-3 sticky top-0 bg-white drop-shadow-sm pb-2">
+    <header className="flex flex-col-reverse md:flex-row gap-5  justify-between md:items-center md:divide-x-2  lg:sticky top-0 bg-white drop-shadow-sm pb-2 z-10">
       {/* stats */}
-      <div className="flex items-center justify-between w-full  gap-5 ">
+      <div className="flex items-center justify-around w-full  gap-5 flex-wrap">
         {dashboard_data_1?.all_branch_data[0]?.specific_branch_data?.stats?.map(
           (stats_data, stats_index) => {
             return (
-              <div key={stats_data?.name} className="w-full max-w-[300px]  ">
+              <div key={stats_index} className="w-full max-w-[10rem]  ">
                 <div className="flex gap-4 items-center">
                   <img
                     src={logoArr[stats_index]}
@@ -37,9 +37,13 @@ const DashboardHeader = () => {
 
       {/* branch selector */}
 
-      <div className=" pl-5 flex items-center gap-4 flex-none">
+      <div className=" pl-5 flex  flex-col sm:flex-row md:flex-col lg:flex-row items-center gap-4 ">
         <div>
-          <img src={client_1_logo} alt="Srinidhi Delux" className="w-32" />
+          <img
+            src={client_1_logo}
+            alt="Srinidhi Delux"
+            className="w-full max-w-[10rem]"
+          />
         </div>
         <div className="inline-block min-w-[200px]">
           <label

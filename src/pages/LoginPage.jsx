@@ -70,7 +70,7 @@ const LoginPage = () => {
           </p>
           <div className="   text-white  mt-10 italic   flex gap-2">
             <span>Developed by</span>
-            <a href="http://ekoinfomatics.com">
+            <a href="http://ekoinfomatics.com" target="_blank" rel="noreferrer">
               <img src={ekoLogo} alt="eko" />
             </a>
           </div>
