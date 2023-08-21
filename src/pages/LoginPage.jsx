@@ -42,16 +42,22 @@ const LoginPage = () => {
   };
 
   const loginCall = (e) => {
+    setErrorText(null);
     e?.preventDefault();
     const formData = new FormData();
     formData?.append("email", credentials?.email);
     formData?.append("password", credentials?.password);
-    axios.post(BASE_LINK + "google/login", formData)?.then((res) => {
-      if (res?.data?.status) {
-        localStorage?.setItem("client_id", res?.data?.data?.id);
-        navigate("/dashboard");
-      }
-    });
+    axios
+      .post(BASE_LINK + "google/login", formData)
+      ?.then((res) => {
+        if (res?.data?.status) {
+          localStorage?.setItem("client_id", res?.data?.data?.id);
+          navigate("/dashboard");
+        }
+      })
+      ?.catch((err) => {
+        setErrorText(err?.message);
+      });
   };
 
   return (
