@@ -8,12 +8,12 @@ const DashboardSuggestionContainer = () => {
     <div className=" mt-5 ">
       <section className="w-full  h-full flex flex-col xl:flex-row  gap-5 mb-5">
         <GraphsContainer />
-        <section className="w-full xl:max-w-[350px]  h-full flex flex-col sm:flex-row xl:flex-col gap-10">
+        <section className="w-full xl:max-w-[350px]  h-full flex flex-col sm:flex-row xl:flex-col gap-5">
           {/* actions */}
           <div className="border rounded-2xl overflow-hidden flex-1 ">
             <div className="flex gap-5 items-center justify-start bg-[#3D3C73] p-3 px-5">
-              <div className="bg-white w-5 rounded-full aspect-square "></div>
-              <h1 className="text-2xl font-semibold text-white">
+              <div className="bg-white w-3 rounded-full aspect-square "></div>
+              <h1 className="text-lg font-semibold text-white">
                 Actions Required
               </h1>
             </div>
@@ -24,7 +24,7 @@ const DashboardSuggestionContainer = () => {
                   return (
                     <li
                       key={action_index}
-                      className="p-3 px-5 text-lg marker:text-[#3633b4]"
+                      className="p-2 px-4 text-base marker:text-[#3633b4]"
                     >
                       {actions_data}
                     </li>
@@ -36,8 +36,8 @@ const DashboardSuggestionContainer = () => {
           {/* topics */}
           <div className="border rounded-2xl overflow-hidden  flex-1">
             <div className="flex gap-5 items-center justify-start bg-[#3D3C73] p-3 px-5">
-              <div className="bg-white w-5 rounded-full aspect-square "></div>
-              <h1 className="text-2xl font-semibold text-white">Topics</h1>
+              <div className="bg-white w-3 rounded-full aspect-square "></div>
+              <h1 className="text-lg font-semibold text-white">Topics</h1>
             </div>
 
             <div className="divide-y-2 divide-gray-100">
@@ -46,7 +46,7 @@ const DashboardSuggestionContainer = () => {
                   return (
                     <li
                       key={topics_index}
-                      className="p-3 px-5 text-lg marker:text-[#3633b4]"
+                      className="p-3 px-5 text-base marker:text-[#3633b4]"
                     >
                       {topics_data}
                     </li>

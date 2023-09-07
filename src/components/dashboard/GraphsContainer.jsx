@@ -4,6 +4,7 @@ import {
   AreaChart,
   Bar,
   CartesianGrid,
+  Cell,
   ComposedChart,
   ResponsiveContainer,
   Tooltip,
@@ -20,20 +21,27 @@ const GraphsContainer = () => {
           Srinidhi's Google Reviews
         </h1>
         {/* Graph */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           {dashboard_data_1?.all_branch_data[0]?.specific_branch_data?.client_analysis?.map(
             (graphs, graphs_index) => {
               return (
-                <div key={graphs?.heading} className="w-full ">
-                  <h1 className="text-2xl font-semibold capitalize py-2">
+                <div
+                  key={graphs?.heading}
+                  className={` ${
+                    graphs?.heading === "sentimental analysis"
+                      ? "w-full md:w-[30%]"
+                      : " w-full"
+                  } `}
+                >
+                  <h1 className="text-sm font-semibold capitalize py-2">
                     {graphs?.heading}
                   </h1>
                   <div className="bg-purple-50 p-2 rounded-lg">
-                    <ResponsiveContainer width="100%" height={300}>
+                    <ResponsiveContainer width="100%" height={400}>
                       <ComposedChart
                         // key={graphName}
                         data={graphs?.graph_data}
-                        margin={{ top: 0, right: 20, left: -20, bottom: 0 }}
+                        margin={{ top: 20, right: 20, left: -20, bottom: 0 }}
                       >
                         <CartesianGrid
                           vertical={false}
@@ -49,24 +57,58 @@ const GraphsContainer = () => {
                           angle={0}
                           textAnchor="middle"
                         />
-                        <YAxis
-                          axisLine={false}
-                          tickLine={false}
-                          fontSize={12}
-                          tickCount={4}
-                          tickFormatter={(number) => `${number}`}
-                          margin={{ right: 20 }}
-                        />
+                        {graphs?.heading === "sentimental analysis" ? (
+                          <YAxis
+                            axisLine={false}
+                            tickLine={false}
+                            fontSize={12}
+                            tickCount={4}
+                            tickFormatter={(number) => `${number}`}
+                            margin={{ right: 20 }}
+                            domain={[0, 100]}
+                          />
+                        ) : (
+                          <YAxis
+                            axisLine={false}
+                            tickLine={false}
+                            fontSize={12}
+                            tickCount={4}
+                            tickFormatter={(number) => `${number}`}
+                            margin={{ right: 20 }}
+                          />
+                        )}
                         <Tooltip cursor={false} content={<CustomTooltip />} />
 
-                        <Bar
-                          stackId="a"
-                          barSize={20}
-                          name={graphs?.heading}
-                          dataKey="value"
-                          fill="#3D3C73"
-                          radius={[5, 5, 0, 0]}
-                        />
+                        {graphs?.heading === "sentimental analysis" ? (
+                          <Bar
+                            barSize={20}
+                            name={graphs?.heading}
+                            dataKey="value"
+                            label={{ position: "top" }}
+                            radius={[5, 5, 0, 0]}
+                          >
+                            {graphs?.graph_data?.map((entry, index) => (
+                              <Cell
+                                key={Math.random()}
+                                fill={entry?.color ? entry?.color : "#3D3C73"}
+                              />
+                            ))}
+                          </Bar>
+                        ) : (
+                          <Bar
+                            barSize={20}
+                            name={graphs?.heading}
+                            dataKey="value"
+                            radius={[5, 5, 0, 0]}
+                          >
+                            {graphs?.graph_data?.map((entry, index) => (
+                              <Cell
+                                key={Math.random()}
+                                fill={entry?.color ? entry?.color : "#3D3C73"}
+                              />
+                            ))}
+                          </Bar>
+                        )}
                       </ComposedChart>
                     </ResponsiveContainer>
                   </div>
@@ -79,24 +121,31 @@ const GraphsContainer = () => {
       {/* ################### */}
       <div className="flex-1">
         <h1 className="p-2 w-full bg-violet-100 text-center font-semibold rounded-md ">
-          Competitors Google Reviews
+          Udupi Gardenia's Google Reviews
         </h1>
         {/* Graph */}
-        <div className="flex flex-col  gap-2">
+        <div className="flex flex-col md:flex-row  gap-2">
           {dashboard_data_1?.all_branch_data[0]?.specific_branch_data?.competitor_analysis?.map(
             (graphs) => {
               return (
-                <div key={graphs?.heading} className="w-full ">
-                  <h1 className="text-2xl font-semibold capitalize py-2">
+                <div
+                  key={graphs?.heading}
+                  className={` ${
+                    graphs?.heading === "sentimental analysis"
+                      ? "w-full md:w-[30%]"
+                      : " w-full"
+                  } `}
+                >
+                  <h1 className="text-sm font-semibold capitalize py-2">
                     {graphs?.heading}
                   </h1>
 
                   <div className="bg-purple-50 p-2 rounded-lg">
-                    <ResponsiveContainer width="100%" height={300}>
+                    <ResponsiveContainer width="100%" height={400}>
                       <ComposedChart
                         // key={graphName}
                         data={graphs?.graph_data}
-                        margin={{ top: 0, right: 20, left: -20, bottom: 0 }}
+                        margin={{ top: 20, right: 20, left: -20, bottom: 0 }}
                       >
                         <CartesianGrid
                           vertical={false}
@@ -112,23 +161,58 @@ const GraphsContainer = () => {
                           angle={0}
                           textAnchor="middle"
                         />
-                        <YAxis
-                          axisLine={false}
-                          tickLine={false}
-                          fontSize={12}
-                          tickCount={4}
-                          tickFormatter={(number) => `${number}`}
-                          margin={{ right: 20 }}
-                        />
+                        {graphs?.heading === "sentimental analysis" ? (
+                          <YAxis
+                            axisLine={false}
+                            tickLine={false}
+                            fontSize={12}
+                            tickCount={4}
+                            tickFormatter={(number) => `${number}`}
+                            margin={{ right: 20 }}
+                            domain={[0, 100]}
+                          />
+                        ) : (
+                          <YAxis
+                            axisLine={false}
+                            tickLine={false}
+                            fontSize={12}
+                            tickCount={4}
+                            tickFormatter={(number) => `${number}`}
+                            margin={{ right: 20 }}
+                          />
+                        )}
                         <Tooltip cursor={false} content={<CustomTooltip />} />
 
-                        <Bar
-                          barSize={20}
-                          name={graphs?.heading}
-                          dataKey="value"
-                          fill="#3D3C73"
-                          radius={[5, 5, 0, 0]}
-                        />
+                        {graphs?.heading === "sentimental analysis" ? (
+                          <Bar
+                            barSize={20}
+                            name={graphs?.heading}
+                            dataKey="value"
+                            label={{ position: "top" }}
+                            radius={[5, 5, 0, 0]}
+                          >
+                            {graphs?.graph_data?.map((entry, index) => (
+                              <Cell
+                                key={Math.random()}
+                                fill={entry?.color ? entry?.color : "#3D3C73"}
+                              />
+                            ))}
+                          </Bar>
+                        ) : (
+                          <Bar
+                            barSize={20}
+                            name={graphs?.heading}
+                            dataKey="value"
+                            radius={[5, 5, 0, 0]}
+                          >
+                            {graphs?.graph_data?.map((entry, index) => (
+                              <Cell
+                                key={Math.random()}
+                                fill={entry?.color ? entry?.color : "#3D3C73"}
+                              />
+                            ))}
+                          </Bar>
+                        )}
                       </ComposedChart>
                     </ResponsiveContainer>
                   </div>

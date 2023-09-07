@@ -2,6 +2,10 @@ import React from "react";
 import { dashboard_data_1 } from "../../mock_data/dashboardData";
 
 import starIcon from "../../assets/star.svg";
+import PositiveIcon from "../../assets/Positive.svg";
+import NegativeIcon from "../../assets/Negative.svg";
+import ExtremeIcon from "../../assets/Extreme.svg";
+import NeutralIcon from "../../assets/Neutral.svg";
 
 const DashboardReviews = (props) => {
   console.log("props?.:", props?.reviews);
@@ -40,7 +44,34 @@ const DashboardReviews = (props) => {
                 className="md:grid grid-cols-10 px-3 py-5  md:p-3 "
               >
                 <h1>{review_data?.date}</h1>
-                <h1>{review_data?.sentiment}</h1>
+                <h1 className="">
+                  {" "}
+                  {review_data?.sentiment === "Positive" ? (
+                    <img
+                      src={PositiveIcon}
+                      alt="Positive"
+                      className="w-[25px] ml-5"
+                    />
+                  ) : review_data?.sentiment === "Neutral" ? (
+                    <img
+                      src={NeutralIcon}
+                      alt="Neutral"
+                      className="w-[25px] ml-5"
+                    />
+                  ) : review_data?.sentiment === "Negative" ? (
+                    <img
+                      src={NegativeIcon}
+                      alt="Negative"
+                      className="w-[25px] ml-5"
+                    />
+                  ) : review_data?.sentiment === "Extreme" ? (
+                    <img
+                      src={ExtremeIcon}
+                      alt="Extreme"
+                      className="w-[25px] ml-5"
+                    />
+                  ) : null}
+                </h1>
                 <div className="col-span-8">
                   <h1>{review_data?.review}</h1>
                   <div className="flex gap-2 mt-1 ">
